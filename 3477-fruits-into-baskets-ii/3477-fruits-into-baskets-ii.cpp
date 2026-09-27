@@ -1,24 +1,26 @@
 class Solution {
 public:
     int numOfUnplacedFruits(vector<int>& fruits, vector<int>& baskets) {
-        int unplacedFruits = 0;
+        const int n = fruits.size();
+        int unplacedCount = 0;
 
-        for(int i=0 ; i< fruits.size(); i++){
-            int placed = false;
+        for (int i = 0; i < n; ++i) {
+            const int currentFruit = fruits[i]; // Local variable caching
+            bool placed = false;
 
-            for(int j=0; j< baskets.size(); j++){
-                if(fruits[i] <= baskets[j]) {
-                    baskets[j] = 0;
+            for (int j = 0; j < n; ++j) {
+                if (baskets[j] >= currentFruit) {
+                    baskets[j] = 0; // Mark basket as used
                     placed = true;
                     break;
                 }
             }
 
-            if(!placed){
-                unplacedFruits++;
+            if (!placed) {
+                unplacedCount++;
             }
         }
 
-        return unplacedFruits;
+        return unplacedCount;
     }
 };
