@@ -5,7 +5,6 @@ public:
 
         int left = 0;
         int right = nums.size() - 1;
-        int smallestElem = INT_MAX;
 
         while(left < right){
             const int mid = left + (right - left) / 2;
