@@ -1,21 +1,19 @@
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        if(nums.size() == 1) return nums[0];
-
         int left = 0;
         int right = nums.size() - 1;
 
         while(left < right){
             const int mid = left + (right - left) / 2;
 
-            // if Left element is smaller
+            // case 1: if right side element is smaller than the pivot
             if(nums[mid] > nums[right]) left = mid + 1;
 
-            // if right element id smaller
+            // case 2: if left side element is smaller than the pivot
             else if(nums[mid] < nums[right]) right = mid;
 
-            // (The Duplicate Case)
+            // case 3: if both the side we have the smaller element than pivot
             else right--;
         }
 
